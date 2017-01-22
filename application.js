@@ -23,12 +23,22 @@ $(document).ready(function(){
   var $tweetZone = $('<div></div>')
   $tweetZone.appendTo($body);
 
+  var timeAtLoad = new Date();
+
+  var getDate = function(date1, date2) {
+    if (date1.getDay() === date2.getDay()){
+      return date1.getHours() + ':' + date1.getMinutes()
+    } else {
+      return 'not today!';
+    }
+  }
+
   // loads intial tweets?
   var index = streams.home.length - 1;
   while(index >= 0){
     var tweet = streams.home[index];
     var $tweet = $('<div></div>');
-    $tweet.text('@' + tweet.user + ': ' + tweet.message + '(' + tweet.created_at + ')');
+    $tweet.text('@' + tweet.user + ': ' + tweet.message + '(' + getDate(tweet.created_at, timeAtLoad) + ')');
     $tweet.appendTo($tweetZone);
     index -= 1;
   }
@@ -40,7 +50,7 @@ $(document).ready(function(){
     while(index >= 0){
       var tweet = streams.home[index];
       var $tweet = $('<div></div>');
-      $tweet.text('@' + tweet.user + ': ' + tweet.message + '(' + tweet.created_at + ')');
+      $tweet.text('@' + tweet.user + ': ' + tweet.message + '(' + getDate(tweet.created_at, timeAtLoad) + ')');
       $tweet.appendTo($tweetZone);
       index -= 1;
     }
