@@ -11,9 +11,9 @@ $(document).ready(function(){
   var $tweetZone = $('<div id="tweetZone"></div>')
   $tweetZone.appendTo($body);
 
-  // loads intial tweets?
+  // loads tweets for all users or one user
   function getTweets(user) {
-    //clear the tweetzone
+
     if (user === undefined) { // if no argument is passed user is all users
       user = streams.home;
     } else {
@@ -30,10 +30,9 @@ $(document).ready(function(){
       $tweet.data('username', tweet.user);
 
       // make user link
-      var $username = $('<a></a>');
+      var $username = $('<a class="username"></a>');
       $username.text('@' + tweet.user);
-      $username.attr({'href': ''});
-      $username.addClass('username');
+      $username.attr({'href': '#'});
 
       // make timestamp span
       var $timeStamp = $('<span class="timestamp"></span>');
@@ -44,12 +43,18 @@ $(document).ready(function(){
       index -= 1;
     }
   }
+  // displays all tweets for page initialization
+  getTweets();
 
-  getTweets('sharksforcheap');
   // button refreshes tweets
-
-  $refresh.on('click', function(){
+  $refresh.on('click', function(event){
     getTweets();
   });
 
+  // event handler for username links that displays up to date tweets for user
+  $('.username').on('click',function(event){
+    event.preventDefault();
+    var user = $(this).closest('.tweet').data('username');
+    getTweets();
+  });
 });
