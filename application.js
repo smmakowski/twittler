@@ -2,22 +2,20 @@ $(document).ready(function(){
 
   var $body = $('body');
 
-  // Place refresh Button
   var $refresh = $('<button></button>');
   $refresh.text('Refresh Page');
   $refresh.appendTo($body);
 
-  // Places TweetZone div
   var $tweetZone = $('<div id="tweetZone"></div>')
   $tweetZone.appendTo($body);
 
-  // loads tweets for all users or one user
+
   function getTweets(user) {
 
-    if (user === undefined) { // if no argument is passed user is all users
+    if (user === undefined) {
       user = streams.home;
     } else {
-      user = streams.users[user]; // user is the user who is passed in
+      user = streams.users[user];
     }
 
     $tweetZone.html('');
@@ -27,12 +25,12 @@ $(document).ready(function(){
     while(index >= 0){
       var tweet = user[index];
       var $tweet = $('<div class="tweet"></div>');
-      $tweet.data('username', tweet.user);
 
       // make user link
       var $username = $('<a class="username"></a>');
       $username.text('@' + tweet.user);
       $username.attr({'href': '#'});
+      $username.data('username', tweet.user);
 
       // make timestamp span
       var $timeStamp = $('<span class="timestamp"></span>');
@@ -42,19 +40,17 @@ $(document).ready(function(){
       $tweet.appendTo($tweetZone);
       index -= 1;
     }
+
+    $refresh.on('click', function(event){
+      getTweets();
+    });
+
+    $('.username').on('click',function(event){
+      event.preventDefault();
+      var user = $(this).data('username');
+      getTweets(user);
+    });
   }
-  // displays all tweets for page initialization
   getTweets();
 
-  // button refreshes tweets
-  $refresh.on('click', function(event){
-    getTweets();
-  });
-
-  // event handler for username links that displays up to date tweets for user
-  $('.username').on('click',function(event){
-    event.preventDefault();
-    var user = $(this).closest('.tweet').data('username');
-    getTweets();
-  });
 });
