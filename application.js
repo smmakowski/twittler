@@ -1,13 +1,8 @@
 $(document).ready(function(){
 
   var $body = $('body');
-
-  var $refresh = $('<button></button>');
-  $refresh.text('Refresh Page');
-  $refresh.appendTo($body);
-
-  var $tweetZone = $('<div id="tweetZone"></div>')
-  $tweetZone.appendTo($body);
+  var $refresh = $('button');
+  var $tweetZone = $('#tweetZone');
 
 
   function getTweets(user) {
@@ -18,7 +13,7 @@ $(document).ready(function(){
       user = streams.users[user];
     }
 
-    $tweetZone.html('');
+    $tweetZone.html('<h4>What\'s been going on?</h4>');
 
     var index = user.length - 1;
 

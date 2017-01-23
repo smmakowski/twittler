@@ -1,32 +1,96 @@
 body {
-  background-color: #3f51b5;
+  background-color: PowderBlue;
+}
+
+header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-style: oblique;
+  font-size: 42px;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}
+
+#textPrompt {
+  width: 320px;
+  background-color: PaleGreen;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+h4 {
+  text-align: center;
+  margin-top: 0;
+  margin-left: 5px;
+  margin-bottom: 5px;
+
+}
+
+input {
+  width: 300px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+::-moz-input-placeholder {
+  text-align: center;
+}
+:-moz-input-placeholder {
+  text-align: center;
+}
+
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 #tweetZone {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: PaleGreen;
+  width: 80%;
+  padding-top: 10px;
 }
 .tweet {
-  margin: 5px;
-  border: solid 2px gray;
+  text-align: left;
   padding: 5px;
   background-color: white;
+  s
 }
+
+a:link a:active a:visited {
+  text-decoration: none;
+  color: white;
+
+}
+
+.username {
+  font-weight: bold;
+  font-size: large;
+  font-color: blue;
+  fontStyle: none;
+}
+
 .timestamp {
   font-style: italic;
   color: gray;
   font-size: small;
-}
-.username {
-  font-weight: bold;
-  font-size: large;
-  font-color: DarkBlue;
-  fontStyle: none;
-}
-h1 {
-  color: white;
-}
-button {
-  font-size: 20px;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #c5cae9;
 }
