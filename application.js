@@ -3,7 +3,7 @@ $(document).ready(function(){
   var $body = $('body');
   var $refresh = $('button');
   var $tweetZone = $('#tweetZone');
-
+  var $input = $('input');
 
   function getTweets(user) {
 
@@ -45,6 +45,13 @@ $(document).ready(function(){
       var user = $(this).data('username');
       getTweets(user);
     });
+
+    $('#userTweet').keydown(function(event){
+      var key = event.which;
+      if (key === 13) {
+        alert('hi');
+      }
+    })
   }
   getTweets();
 
