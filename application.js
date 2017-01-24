@@ -31,28 +31,25 @@ $(document).ready(function(){
       var $timeStamp = $('<span class="timestamp"></span>');
       $timeStamp.text(' (' + tweet.created_at.toUTCString() + ')');
 
+      // create the tweet and add it to the feed
       $tweet.append($username,' : ' + tweet.message, $timeStamp);
       $tweet.appendTo($tweetZone);
       index -= 1;
     }
 
+    // update tweet feed/show tweets for all
     $refresh.on('click', function(event){
       getTweets();
     });
 
+    //show user feed when link is pressed
     $('.username').on('click',function(event){
       event.preventDefault();
       var user = $(this).data('username');
       getTweets(user);
     });
-
-    $('#userTweet').keydown(function(event){
-      var key = event.which;
-      if (key === 13) {
-        alert('hi');
-      }
-    })
   }
-  getTweets();
 
+  //load some inital tweets
+  getTweets();
 });
